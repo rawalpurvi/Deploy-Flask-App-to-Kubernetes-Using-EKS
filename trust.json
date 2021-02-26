@@ -1,7 +1,7 @@
 { "Version": "2012-10-17",
     "Statement":[{
        "Effect": "Allow",
-       "Principal": {"AWS":"arn:aws:iam::516890293785:root"},
+       "Principal": {"AWS":"arn:aws:iam::516890293785:role/UdacityFlaskDeployCBKubectlRole"},
        "Action": "sts:AssumeRole"
     }]
 }
