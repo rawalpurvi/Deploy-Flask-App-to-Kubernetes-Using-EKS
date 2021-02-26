@@ -18,7 +18,6 @@ phases:
       # Command for specific kubectl version:
       # - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.0/bin/linux/amd64/kubectl
       - chmod +x ./kubectl ./aws-iam-authenticator
-      - echo `kubectl --kubeconfig /root/.kube/config version`
       - export PATH=$PWD/:$PATH
       - python -m pip install --upgrade --force pip
       - apt-get update && apt-get -y install jq  && pip install --upgrade awscli
@@ -39,7 +38,7 @@ phases:
       - docker push $REPOSITORY_URI:$TAG
       - echo $EKS_KUBECTL_ROLE_ARN
       - echo $EKS_CLUSTER_NAME
-      - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --role-arn $EKS_KUBECTL_ROLE_ARN
+      - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
       - kubectl apply -f simple_jwt_api.yml 
       - printf '[{"name":"simple_jwt_api","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
 artifacts:
