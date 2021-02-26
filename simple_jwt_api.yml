@@ -4,9 +4,6 @@ metadata:
   name: simple-jwt-api
 spec:
   type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: 8080
   selector:
     app: simple-jwt-api
 ---
